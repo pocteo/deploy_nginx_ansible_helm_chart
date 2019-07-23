@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebsite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mywebsite
+  template:
+    metadata:
+      labels:
+        app: mywebsite
+    spec:
+      containers:
+      - name: mywebsite
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always

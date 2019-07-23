@@ -1,0 +1,14 @@
+- hosts: localhost
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: Get helm/tiller (client/server) versions
+      command: helm --kubeconfig=config version
+      register: helm_tiller_versions
+    - name: Display helm/tiller (client/server) versions
+      debug:
+        var: helm_tiller_versions
+    - name: Init tiller server
+      command: helm --kubeconfig=config init
+    - name: Install nginx application via helm chart
+      command: helm --kubeconfig=config install mywebsite
