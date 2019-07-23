@@ -1,3 +1,8 @@
+### Requirements
+
+You have to replace config file by yours
+
+
 ### Installation
 
     build -t pocteo/ansible-helm .
